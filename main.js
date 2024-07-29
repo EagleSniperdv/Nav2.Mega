@@ -1,6 +1,6 @@
 const showMenu = (toggleId, navId) => {
     const toggle = document.getElementById(toggleId),
-          nav = document.getElementById(navId);
+        nav = document.getElementById(navId);
     
     if (toggle && nav) {
         toggle.addEventListener('click', () => {
@@ -43,3 +43,20 @@ const toggleItem = (item) => {
         }
     }
 };
+
+const mediaQuery = matchMedia('(min-width: 1118px)'),
+        dropdownContainer = document.querySelectorAll('.dropdown__container')
+
+const removeStyle = () => {
+    if(mediaQuery.matches){
+        dropdownContainer.forEach((e) => {
+            e.removeAttribute('style')
+        });
+
+        dropdownItems.forEach((e => {
+            e.classList.remove('show-dropdown');
+        }))
+    }
+}
+
+addEventListener('resize', removeStyle);
